@@ -1,0 +1,11 @@
+dependencies {
+	compile project(":modules:InvoiceService:InvoiceService-api")
+
+	compileOnly group: "com.liferay.portal", name: "release.dxp.api"
+}
+
+buildService {
+	apiDir = "../InvoiceService-api/src/main/java"
+}
+
+group = "com.cmancode.invoice.service.app"
