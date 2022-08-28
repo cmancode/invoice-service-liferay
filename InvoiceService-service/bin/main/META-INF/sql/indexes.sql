@@ -1,0 +1,1 @@
+create index IX_F6B0858A on InvoiceService_Invoice (invoiceNumber[$COLUMN_LENGTH:75$]);

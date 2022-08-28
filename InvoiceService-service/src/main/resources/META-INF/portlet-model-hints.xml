@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.cmancode.invoice.service.app.model.Invoice">
+		<field name="invoiceId" type="long" />
+		<field name="invoiceNumber" type="String" />
+		<field name="client" type="String" />
+		<field name="total" type="String" />
+	</model>
+</model-hints>
