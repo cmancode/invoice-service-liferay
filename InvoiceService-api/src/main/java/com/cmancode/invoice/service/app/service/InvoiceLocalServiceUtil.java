@@ -216,6 +216,10 @@ public class InvoiceLocalServiceUtil {
 		return getService().fetchInvoice(invoiceId);
 	}
 
+	public static Invoice findInvoiceById(long invoiceId) {
+		return getService().findInvoiceById(invoiceId);
+	}
+
 	public static List<Invoice> findInvoices() {
 		return getService().findInvoices();
 	}

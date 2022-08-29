@@ -56,6 +56,8 @@ public interface InvoiceService extends BaseService {
 		String invoiceNumber, String client, String total,
 		ServiceContext serviceContext);
 
+	public Invoice findInvoiceById(long invoiceId);
+
 	public List<Invoice> findInvoices();
 
 	/**

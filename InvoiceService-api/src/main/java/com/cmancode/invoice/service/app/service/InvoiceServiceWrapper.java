@@ -44,6 +44,13 @@ public class InvoiceServiceWrapper
 	}
 
 	@Override
+	public com.cmancode.invoice.service.app.model.Invoice findInvoiceById(
+		long invoiceId) {
+
+		return _invoiceService.findInvoiceById(invoiceId);
+	}
+
+	@Override
 	public java.util.List<com.cmancode.invoice.service.app.model.Invoice>
 		findInvoices() {
 

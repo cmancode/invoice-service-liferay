@@ -47,6 +47,10 @@ public class InvoiceServiceUtil {
 			invoiceNumber, client, total, serviceContext);
 	}
 
+	public static Invoice findInvoiceById(long invoiceId) {
+		return getService().findInvoiceById(invoiceId);
+	}
+
 	public static List<Invoice> findInvoices() {
 		return getService().findInvoices();
 	}

@@ -160,6 +160,38 @@ public class InvoiceServiceHttp {
 		}
 	}
 
+	public static com.cmancode.invoice.service.app.model.Invoice
+		findInvoiceById(HttpPrincipal httpPrincipal, long invoiceId) {
+
+		try {
+			MethodKey methodKey = new MethodKey(
+				InvoiceServiceUtil.class, "findInvoiceById",
+				_findInvoiceByIdParameterTypes3);
+
+			MethodHandler methodHandler = new MethodHandler(
+				methodKey, invoiceId);
+
+			Object returnObj = null;
+
+			try {
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
+			}
+			catch (Exception exception) {
+				throw new com.liferay.portal.kernel.exception.SystemException(
+					exception);
+			}
+
+			return (com.cmancode.invoice.service.app.model.Invoice)returnObj;
+		}
+		catch (com.liferay.portal.kernel.exception.SystemException
+					systemException) {
+
+			_log.error(systemException, systemException);
+
+			throw systemException;
+		}
+	}
+
 	private static Log _log = LogFactoryUtil.getLog(InvoiceServiceHttp.class);
 
 	private static final Class<?>[] _addInvoiceParameterTypes0 = new Class[] {
@@ -173,5 +205,7 @@ public class InvoiceServiceHttp {
 		};
 	private static final Class<?>[] _findInvoicesParameterTypes2 =
 		new Class[] {};
+	private static final Class<?>[] _findInvoiceByIdParameterTypes3 =
+		new Class[] {long.class};
 
 }

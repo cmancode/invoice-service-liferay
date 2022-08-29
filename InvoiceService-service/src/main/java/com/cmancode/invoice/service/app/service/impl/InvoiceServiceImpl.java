@@ -49,4 +49,8 @@ public class InvoiceServiceImpl extends InvoiceServiceBaseImpl {
 		return super.invoiceLocalService.findInvoices();
 	}
 	
+	public Invoice findInvoiceById(long invoiceId) {
+		return this.invoiceLocalService.findInvoiceById(invoiceId);
+	}
+	
 }

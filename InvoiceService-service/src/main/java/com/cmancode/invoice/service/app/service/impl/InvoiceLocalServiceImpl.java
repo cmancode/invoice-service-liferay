@@ -68,4 +68,17 @@ public class InvoiceLocalServiceImpl extends InvoiceLocalServiceBaseImpl {
 		return super.invoicePersistence.findAll();
 	}
 	
+	public Invoice findInvoiceById(long invoiceId) {
+		Invoice invoice = null;
+		try {
+			invoice = super.getInvoice(invoiceId);
+			return invoice;
+		} catch (PortalException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}	
+
+	}
+	
 }

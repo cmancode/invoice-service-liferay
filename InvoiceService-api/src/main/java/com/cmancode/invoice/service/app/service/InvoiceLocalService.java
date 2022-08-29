@@ -205,6 +205,8 @@ public interface InvoiceLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Invoice fetchInvoice(long invoiceId);
 
+	public Invoice findInvoiceById(long invoiceId);
+
 	public List<Invoice> findInvoices();
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
