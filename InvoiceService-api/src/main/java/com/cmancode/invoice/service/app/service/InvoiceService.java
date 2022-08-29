@@ -14,13 +14,18 @@
 
 package com.cmancode.invoice.service.app.service;
 
+import com.cmancode.invoice.service.app.model.Invoice;
+
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.jsonwebservice.JSONWebService;
 import com.liferay.portal.kernel.security.access.control.AccessControlled;
 import com.liferay.portal.kernel.service.BaseService;
+import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.transaction.Isolation;
 import com.liferay.portal.kernel.transaction.Transactional;
+
+import java.util.List;
 
 import org.osgi.annotation.versioning.ProviderType;
 
@@ -47,6 +52,11 @@ public interface InvoiceService extends BaseService {
 	 *
 	 * Never modify this interface directly. Add custom service methods to <code>com.cmancode.invoice.service.app.service.impl.InvoiceServiceImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface. Consume the invoice remote service via injection or a <code>org.osgi.util.tracker.ServiceTracker</code>. Use {@link InvoiceServiceUtil} if injection and service tracking are not available.
 	 */
+	public Invoice addInvoice(
+		String invoiceNumber, String client, String total,
+		ServiceContext serviceContext);
+
+	public List<Invoice> findInvoices();
 
 	/**
 	 * Returns the OSGi service identifier.

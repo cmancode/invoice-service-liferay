@@ -14,13 +14,22 @@
 
 package com.cmancode.invoice.service.app.service.http;
 
+import com.cmancode.invoice.service.app.service.InvoiceServiceUtil;
+
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.security.auth.HttpPrincipal;
+import com.liferay.portal.kernel.service.http.TunnelUtil;
+import com.liferay.portal.kernel.util.MethodHandler;
+import com.liferay.portal.kernel.util.MethodKey;
+
 /**
  * Provides the HTTP utility for the
- * <code>com.cmancode.invoice.service.app.service.InvoiceServiceUtil</code> service
+ * <code>InvoiceServiceUtil</code> service
  * utility. The
  * static methods of this class calls the same methods of the service utility.
  * However, the signatures are different because it requires an additional
- * <code>com.liferay.portal.kernel.security.auth.HttpPrincipal</code> parameter.
+ * <code>HttpPrincipal</code> parameter.
  *
  * <p>
  * The benefits of using the HTTP utility is that it is fast and allows for
@@ -41,4 +50,80 @@ package com.cmancode.invoice.service.app.service.http;
  * @generated
  */
 public class InvoiceServiceHttp {
+
+	public static com.cmancode.invoice.service.app.model.Invoice addInvoice(
+		HttpPrincipal httpPrincipal, String invoiceNumber, String client,
+		String total,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext) {
+
+		try {
+			MethodKey methodKey = new MethodKey(
+				InvoiceServiceUtil.class, "addInvoice",
+				_addInvoiceParameterTypes0);
+
+			MethodHandler methodHandler = new MethodHandler(
+				methodKey, invoiceNumber, client, total, serviceContext);
+
+			Object returnObj = null;
+
+			try {
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
+			}
+			catch (Exception exception) {
+				throw new com.liferay.portal.kernel.exception.SystemException(
+					exception);
+			}
+
+			return (com.cmancode.invoice.service.app.model.Invoice)returnObj;
+		}
+		catch (com.liferay.portal.kernel.exception.SystemException
+					systemException) {
+
+			_log.error(systemException, systemException);
+
+			throw systemException;
+		}
+	}
+
+	public static java.util.List<com.cmancode.invoice.service.app.model.Invoice>
+		findInvoices(HttpPrincipal httpPrincipal) {
+
+		try {
+			MethodKey methodKey = new MethodKey(
+				InvoiceServiceUtil.class, "findInvoices",
+				_findInvoicesParameterTypes1);
+
+			MethodHandler methodHandler = new MethodHandler(methodKey);
+
+			Object returnObj = null;
+
+			try {
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
+			}
+			catch (Exception exception) {
+				throw new com.liferay.portal.kernel.exception.SystemException(
+					exception);
+			}
+
+			return (java.util.List
+				<com.cmancode.invoice.service.app.model.Invoice>)returnObj;
+		}
+		catch (com.liferay.portal.kernel.exception.SystemException
+					systemException) {
+
+			_log.error(systemException, systemException);
+
+			throw systemException;
+		}
+	}
+
+	private static Log _log = LogFactoryUtil.getLog(InvoiceServiceHttp.class);
+
+	private static final Class<?>[] _addInvoiceParameterTypes0 = new Class[] {
+		String.class, String.class, String.class,
+		com.liferay.portal.kernel.service.ServiceContext.class
+	};
+	private static final Class<?>[] _findInvoicesParameterTypes1 =
+		new Class[] {};
+
 }

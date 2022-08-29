@@ -28,6 +28,7 @@ import com.liferay.portal.kernel.search.Indexable;
 import com.liferay.portal.kernel.search.IndexableType;
 import com.liferay.portal.kernel.service.BaseLocalService;
 import com.liferay.portal.kernel.service.PersistedModelLocalService;
+import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.transaction.Isolation;
 import com.liferay.portal.kernel.transaction.Propagation;
 import com.liferay.portal.kernel.transaction.Transactional;
@@ -75,6 +76,10 @@ public interface InvoiceLocalService
 	 */
 	@Indexable(type = IndexableType.REINDEX)
 	public Invoice addInvoice(Invoice invoice);
+
+	public Invoice addInvoice(
+		String invoiceNumber, String client, String total,
+		ServiceContext serviceContext);
 
 	/**
 	 * Creates a new invoice with the primary key. Does not add the invoice to the database.
@@ -199,6 +204,8 @@ public interface InvoiceLocalService
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Invoice fetchInvoice(long invoiceId);
+
+	public List<Invoice> findInvoices();
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();

@@ -34,6 +34,22 @@ public class InvoiceServiceWrapper
 		_invoiceService = invoiceService;
 	}
 
+	@Override
+	public com.cmancode.invoice.service.app.model.Invoice addInvoice(
+		String invoiceNumber, String client, String total,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext) {
+
+		return _invoiceService.addInvoice(
+			invoiceNumber, client, total, serviceContext);
+	}
+
+	@Override
+	public java.util.List<com.cmancode.invoice.service.app.model.Invoice>
+		findInvoices() {
+
+		return _invoiceService.findInvoices();
+	}
+
 	/**
 	 * Returns the OSGi service identifier.
 	 *

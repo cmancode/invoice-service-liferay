@@ -14,6 +14,10 @@
 
 package com.cmancode.invoice.service.app.service;
 
+import com.cmancode.invoice.service.app.model.Invoice;
+
+import java.util.List;
+
 /**
  * Provides the remote service utility for Invoice. This utility wraps
  * <code>com.cmancode.invoice.service.app.service.impl.InvoiceServiceImpl</code> and is an
@@ -33,13 +37,24 @@ public class InvoiceServiceUtil {
 	 *
 	 * Never modify this class directly. Add custom service methods to <code>com.cmancode.invoice.service.app.service.impl.InvoiceServiceImpl</code> and rerun ServiceBuilder to regenerate this class.
 	 */
+	public static Invoice addInvoice(
+		String invoiceNumber, String client, String total,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext) {
+
+		return getService().addInvoice(
+			invoiceNumber, client, total, serviceContext);
+	}
+
+	public static List<Invoice> findInvoices() {
+		return getService().findInvoices();
+	}
 
 	/**
 	 * Returns the OSGi service identifier.
 	 *
 	 * @return the OSGi service identifier
 	 */
-	public static java.lang.String getOSGiServiceIdentifier() {
+	public static String getOSGiServiceIdentifier() {
 		return getService().getOSGiServiceIdentifier();
 	}
 

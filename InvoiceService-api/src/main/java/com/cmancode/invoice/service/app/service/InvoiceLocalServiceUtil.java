@@ -60,6 +60,14 @@ public class InvoiceLocalServiceUtil {
 		return getService().addInvoice(invoice);
 	}
 
+	public static Invoice addInvoice(
+		String invoiceNumber, String client, String total,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext) {
+
+		return getService().addInvoice(
+			invoiceNumber, client, total, serviceContext);
+	}
+
 	/**
 	 * Creates a new invoice with the primary key. Does not add the invoice to the database.
 	 *
@@ -206,6 +214,10 @@ public class InvoiceLocalServiceUtil {
 
 	public static Invoice fetchInvoice(long invoiceId) {
 		return getService().fetchInvoice(invoiceId);
+	}
+
+	public static List<Invoice> findInvoices() {
+		return getService().findInvoices();
 	}
 
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery

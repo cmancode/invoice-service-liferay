@@ -51,6 +51,15 @@ public class InvoiceLocalServiceWrapper
 		return _invoiceLocalService.addInvoice(invoice);
 	}
 
+	@Override
+	public com.cmancode.invoice.service.app.model.Invoice addInvoice(
+		String invoiceNumber, String client, String total,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext) {
+
+		return _invoiceLocalService.addInvoice(
+			invoiceNumber, client, total, serviceContext);
+	}
+
 	/**
 	 * Creates a new invoice with the primary key. Does not add the invoice to the database.
 	 *
@@ -228,6 +237,13 @@ public class InvoiceLocalServiceWrapper
 		long invoiceId) {
 
 		return _invoiceLocalService.fetchInvoice(invoiceId);
+	}
+
+	@Override
+	public java.util.List<com.cmancode.invoice.service.app.model.Invoice>
+		findInvoices() {
+
+		return _invoiceLocalService.findInvoices();
 	}
 
 	@Override

@@ -14,9 +14,13 @@
 
 package com.cmancode.invoice.service.app.service.impl;
 
+import com.cmancode.invoice.service.app.model.Invoice;
 import com.cmancode.invoice.service.app.service.base.InvoiceLocalServiceBaseImpl;
 
 import com.liferay.portal.aop.AopService;
+import com.liferay.portal.kernel.service.ServiceContext;
+
+import java.util.List;
 
 import org.osgi.service.component.annotations.Component;
 
@@ -28,4 +32,28 @@ import org.osgi.service.component.annotations.Component;
 	service = AopService.class
 )
 public class InvoiceLocalServiceImpl extends InvoiceLocalServiceBaseImpl {
+	
+	
+	//Method for generate invoice
+	public Invoice addInvoice(String invoiceNumber, String client, String total, ServiceContext serviceContext) {
+		
+		// Increment Id
+		long invoiceId = super.counterLocalService.increment(Invoice.class.getName());
+		
+		// Creating of Invoice with ID generated
+		Invoice invoice = super.createInvoice(invoiceId);
+		
+		//Setting values in attributes in object
+		invoice.setInvoiceNumber(invoiceNumber);
+		invoice.setClient(client);
+		invoice.setTotal(total);
+		
+		//Adding info in database
+		return super.addInvoice(invoice);
+	}
+	
+	public List<Invoice> findInvoices() {
+		return super.invoicePersistence.findAll();
+	}
+	
 }
