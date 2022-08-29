@@ -18,6 +18,7 @@ import com.cmancode.invoice.service.app.model.Invoice;
 import com.cmancode.invoice.service.app.service.base.InvoiceLocalServiceBaseImpl;
 
 import com.liferay.portal.aop.AopService;
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.service.ServiceContext;
 
 import java.util.List;
@@ -50,6 +51,17 @@ public class InvoiceLocalServiceImpl extends InvoiceLocalServiceBaseImpl {
 		
 		//Adding info in database
 		return super.addInvoice(invoice);
+	}
+	
+	public Invoice updateInvoice(long invoiceId, String invoiceNumber, String client, String total, ServiceContext serviceContext) throws PortalException {
+		
+		Invoice invoice = getInvoice(invoiceId);
+		
+		invoice.setInvoiceNumber(invoiceNumber);
+		invoice.setClient(client);
+		invoice.setTotal(total);
+		
+		return super.updateInvoice(invoice);
 	}
 	
 	public List<Invoice> findInvoices() {

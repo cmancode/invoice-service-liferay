@@ -16,6 +16,8 @@ package com.cmancode.invoice.service.app.service;
 
 import com.cmancode.invoice.service.app.model.Invoice;
 
+import com.liferay.portal.kernel.exception.PortalException;
+
 import java.util.List;
 
 /**
@@ -56,6 +58,15 @@ public class InvoiceServiceUtil {
 	 */
 	public static String getOSGiServiceIdentifier() {
 		return getService().getOSGiServiceIdentifier();
+	}
+
+	public static Invoice updateInvoice(
+			long invoiceId, String invoiceNumber, String client, String total,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws PortalException {
+
+		return getService().updateInvoice(
+			invoiceId, invoiceNumber, client, total, serviceContext);
 	}
 
 	public static InvoiceService getService() {

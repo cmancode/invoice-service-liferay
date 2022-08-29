@@ -300,6 +300,15 @@ public class InvoiceLocalServiceUtil {
 		return getService().updateInvoice(invoice);
 	}
 
+	public static Invoice updateInvoice(
+			long invoiceId, String invoiceNumber, String client, String total,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws PortalException {
+
+		return getService().updateInvoice(
+			invoiceId, invoiceNumber, client, total, serviceContext);
+	}
+
 	public static InvoiceLocalService getService() {
 		return _service;
 	}

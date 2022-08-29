@@ -65,4 +65,9 @@ public interface InvoiceService extends BaseService {
 	 */
 	public String getOSGiServiceIdentifier();
 
+	public Invoice updateInvoice(
+			long invoiceId, String invoiceNumber, String client, String total,
+			ServiceContext serviceContext)
+		throws PortalException;
+
 }

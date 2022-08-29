@@ -61,6 +61,16 @@ public class InvoiceServiceWrapper
 	}
 
 	@Override
+	public com.cmancode.invoice.service.app.model.Invoice updateInvoice(
+			long invoiceId, String invoiceNumber, String client, String total,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _invoiceService.updateInvoice(
+			invoiceId, invoiceNumber, client, total, serviceContext);
+	}
+
+	@Override
 	public InvoiceService getWrappedService() {
 		return _invoiceService;
 	}

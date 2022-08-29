@@ -85,13 +85,56 @@ public class InvoiceServiceHttp {
 		}
 	}
 
+	public static com.cmancode.invoice.service.app.model.Invoice updateInvoice(
+			HttpPrincipal httpPrincipal, long invoiceId, String invoiceNumber,
+			String client, String total,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		try {
+			MethodKey methodKey = new MethodKey(
+				InvoiceServiceUtil.class, "updateInvoice",
+				_updateInvoiceParameterTypes1);
+
+			MethodHandler methodHandler = new MethodHandler(
+				methodKey, invoiceId, invoiceNumber, client, total,
+				serviceContext);
+
+			Object returnObj = null;
+
+			try {
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
+			}
+			catch (Exception exception) {
+				if (exception instanceof
+						com.liferay.portal.kernel.exception.PortalException) {
+
+					throw (com.liferay.portal.kernel.exception.PortalException)
+						exception;
+				}
+
+				throw new com.liferay.portal.kernel.exception.SystemException(
+					exception);
+			}
+
+			return (com.cmancode.invoice.service.app.model.Invoice)returnObj;
+		}
+		catch (com.liferay.portal.kernel.exception.SystemException
+					systemException) {
+
+			_log.error(systemException, systemException);
+
+			throw systemException;
+		}
+	}
+
 	public static java.util.List<com.cmancode.invoice.service.app.model.Invoice>
 		findInvoices(HttpPrincipal httpPrincipal) {
 
 		try {
 			MethodKey methodKey = new MethodKey(
 				InvoiceServiceUtil.class, "findInvoices",
-				_findInvoicesParameterTypes1);
+				_findInvoicesParameterTypes2);
 
 			MethodHandler methodHandler = new MethodHandler(methodKey);
 
@@ -123,7 +166,12 @@ public class InvoiceServiceHttp {
 		String.class, String.class, String.class,
 		com.liferay.portal.kernel.service.ServiceContext.class
 	};
-	private static final Class<?>[] _findInvoicesParameterTypes1 =
+	private static final Class<?>[] _updateInvoiceParameterTypes1 =
+		new Class[] {
+			long.class, String.class, String.class, String.class,
+			com.liferay.portal.kernel.service.ServiceContext.class
+		};
+	private static final Class<?>[] _findInvoicesParameterTypes2 =
 		new Class[] {};
 
 }
